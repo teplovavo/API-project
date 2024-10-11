@@ -36,11 +36,20 @@
 
     <script>
         //convert from one currency to another
+        //get value from input
+        //convert to uppercase
         async function convertCurrency() {
-            const amount = document.getElementById('amount').value;
-            const fromCurrency = document.getElementById('fromCurrency').value.toUpperCase();
-            const toCurrency = document.getElementById('toCurrency').value.toUpperCase();
+            const amount = document.getElementById('amount').value; 
+            const fromCurrency = document.getElementById('fromCurrency').value.toUpperCase(); 
+            const toCurrency = document.getElementById('toCurrency').value.toUpperCase(); 
             const apiKey = '348d391ecec20f74720a63d0'; //API Key to have access. 1500 requests per month
+
+
+            if (!amount || !fromCurrency || !toCurrency) { //check if empty
+                document.getElementById('result').innerText = 'Please fill in all fields'; //error message
+                return; //stop
+            }
+
 
         }
 
