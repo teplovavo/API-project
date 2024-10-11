@@ -50,6 +50,13 @@
                 return; //stop
             }
 
+            
+            try {
+               //get data from API
+                const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/${fromCurrency}`); 
+                const data = await response.json(); 
+                const rate = data.conversion_rates[toCurrency]; 
+
 
         }
 
