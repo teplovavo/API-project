@@ -1,14 +1,14 @@
-// API key for the exchange rate API
+// API key 
 const apiKey = '348d391ecec20f74720a63d0';
 
-// Function to fetch the list of countries and currencies from the API
+// fetch the list of countries and currencies 
 export async function getCountryCurrencyData() {
     try {
-        const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`);
-        const data = await response.json();
+        const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`); //API link
+        const data = await response.json(); //Get data
         return data.supported_codes; // Return the list of country-currency pairs
     } catch (error) {
-        console.error('Error fetching country-currency data:', error);
+        console.error('Error fetching country-currency data:', error); //Error handling
         return [];
     }
 }
@@ -49,13 +49,13 @@ export async function handleCountrySearch() {
         }
 
         // Display the matching countries and their currencies
-        filteredCountries.forEach(([currencyCode, countryName]) => {
-            const listItem = document.createElement('li');
-            listItem.textContent = `${countryName}: ${currencyCode}`;
-            resultDisplay.appendChild(listItem);
+        filteredCountries.forEach(([currencyCode, countryName]) => { // Loop through the filtered list
+            const listItem = document.createElement('li'); // Create a list item
+            listItem.textContent = `${countryName}: ${currencyCode}`; // Set the list item text
+            resultDisplay.appendChild(listItem); // Add the list item to the result display
         });
     } catch (error) {
-        console.error('Error fetching country-currency data:', error);
-        resultDisplay.innerHTML = 'Error fetching data';
+        console.error('Error fetching country-currency data:', error); // Error handling
+        resultDisplay.innerHTML = 'Error fetching data'; // Display an error message
     }
 }
