@@ -1,6 +1,94 @@
-
-
-h1 {
-    text-align: center;
-    color: rgb(25, 32, 9);
+/* General body styles with background image */
+body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-image: url('./venice2.jpeg'); /* Replace 'your-image.jpg' with the actual path to your image */
+    background-size: cover; /* Make the image cover the entire background */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent the image from repeating */
+    color: #fff; /* Change text color to white for better contrast */
+    margin: 0;
+    padding: 20px;
+    display: block;
+    height: 100vh; /* Ensure the body takes the full height */
+    overflow-y: auto;
 }
+
+/* Container with semi-transparent background for better readability */
+.container {
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent black background */
+    padding: 40px;
+    border: 3px solid #3498db; /* Bright blue border */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Strong shadow */
+    max-width: 450px;
+    width: 100%;
+    margin: 20px auto;
+}
+
+/* Main title */
+h1 {
+    color: #fff; /* White color for better contrast */
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Input styles for amount, search, and dropdowns with less transparency */
+input[type="number"], 
+input[type="text"], 
+select {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.85); /* Less transparent background for better visibility */
+    color: #333; /* Dark text for input fields */
+}
+
+/* Highlight the input border on focus */
+input[type="number"]:focus, 
+input[type="text"]:focus, 
+select:focus {
+    border-color: #3498db; /* Bright blue border on focus */
+    outline: none;
+}
+
+/* Button styles with bright colors */
+button {
+    background-color: #e74c3c; /* Bright red button */
+    color: white;
+    padding: 12px;
+    font-size: 1.1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 10px;
+    display: block;
+    width: 100%;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+}
+
+/* Swap button with blue color */
+button:nth-child(8) {
+    background-color: #3498db; /* Bright blue for swap button */
+}
+
+button:nth-child(8):hover {
+    background-color: #2980b9; /* Darker blue on hover */
+}
+
+/* Result text */
+p#result {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    color: #16a085; /* Bright green for result */
+    text-align: center;
+    padding: 15px;
+    border

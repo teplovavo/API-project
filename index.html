@@ -4,10 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SBA 308a Teplova, Veronika</title>
-    <script defer src="./script.js"></script>
+    <script type="module" defer src="./script.js"></script>
+    <script type="module" defer src="./search.js"></script>
+
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+    <div class="container">
     <h1>Currency Converter</h1>
     <br/>
     <br/>
@@ -27,11 +30,25 @@
 <label for="toCurrency">To:</label>
 <select id="toCurrency"></select>
 
-<button onclick="convertCurrency()">Convert</button>
+<button id="convertBtn">Convert</button>
 <br/>
-<button onclick="swapCurrencies()">Swap</button>
+<button id="swapBtn">Swap</button>
 <br/>
 <p id="result"></p>
+
+   <!-- --------------Search Country ------- -->
+   <h2>Search for Country Currency</h2>
+   <label for="countrySearch">Search Country:</label>
+   <input type="text" id="countrySearch" placeholder="Enter country name">
+   <br/><br/>
+   <button id="countrySearchBtn">Search</button>
+   <br>
+   <br/>
+   <ul id="countryResult"></ul>
+</div>
+<br/><br/>
+
+<br/><br/>
 
 
 </body>

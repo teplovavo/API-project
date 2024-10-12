@@ -1,61 +1,68 @@
-console.log("Hello")
-
-
-
+// API key for the exchange rate API
 const apiKey = '348d391ecec20f74720a63d0';
 
+import { handleCountrySearch } from './search.js';
 
+// Adding event listeners for the buttons
+document.getElementById('countrySearchBtn').addEventListener('click', handleCountrySearch);
+document.getElementById('convertBtn').addEventListener('click', convertCurrency);
+document.getElementById('swapBtn').addEventListener('click', swapCurrencies);
 
+console.log("Hello");
 
-//get the list of currencies
+// Fetch the list of currencies and populate dropdowns
 async function getCurrencies() {
     try {
-        // Call the API to get supported currency codes
         const response = await fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/codes`);
         const data = await response.json();
-        const currencyList = data.supported_codes;
-
-        // Get the dropdown elements
-        const fromCurrency = document.getElementById('fromCurrency');
-        const toCurrency = document.getElementById('toCurrency');
-
-        // Loop through the currency list and create options for dropdowns
-        currencyList.forEach(([code, name]) => {
-            const optionFrom = document.createElement('option');
-            optionFrom.value = code;
-            optionFrom.text = `${code} - ${name}`;
-            fromCurrency.appendChild(optionFrom);
-
-            const optionTo = document.createElement('option');
-            optionTo.value = code;
-            optionTo.text = `${code} - ${name}`;
-            toCurrency.appendChild(optionTo);
-        });
-
-
+        const currencyList = data.supported_codes; // Array of country-currency pairs
+        displayCurrencies(currencyList); // Pass the list to display in the dropdowns
     } catch (error) {
-        //log the error
-        console.error('Error fetching currency list:', error);
+        console.error('Error fetching currency list:', error); // Log any errors from the API
     }
-
 }
 
+// Function to display the currencies in dropdowns
+function displayCurrencies(currencyList) {
+    const fromCurrency = document.getElementById('fromCurrency');
+    const toCurrency = document.getElementById('toCurrency');
+    const amountInput = document.getElementById('amount');
 
+    // Clear current dropdown options before adding new ones
+    fromCurrency.innerHTML = '';
+    toCurrency.innerHTML = '';
 
-// Call the function to get currencies when the page loads
-window.onload = getCurrencies;
+    // Populate dropdowns with available currencies
+    currencyList.forEach(([code, name]) => {
+        const optionFrom = document.createElement('option');
+        optionFrom.value = code;
+        optionFrom.text = `${code} - ${name}`;
+        fromCurrency.appendChild(optionFrom);
 
-// Function to convert currency
+        const optionTo = document.createElement('option');
+        optionTo.value = code;
+        optionTo.text = `${code} - ${name}`;
+        toCurrency.appendChild(optionTo);
+    });
+
+    // Set default currencies to USD and EUR for user convenience
+    fromCurrency.value = 'USD';
+    toCurrency.value = 'EUR';
+
+    // Set default amount to 100
+    amountInput.value = 100;
+}
+
+// Function to handle currency conversion
 async function convertCurrency() {
-    // Get values from the inputs
     const amount = document.getElementById('amount').value;
     const fromCurrency = document.getElementById('fromCurrency').value;
     const toCurrency = document.getElementById('toCurrency').value;
 
-    // Check if the user filled all fields
+    // Check if all fields are filled in
     if (!amount || !fromCurrency || !toCurrency) {
-        document.getElementById('result').innerText = 'Please fill in all fields'; // Show error message
-        return; // Stop if fields are empty
+        document.getElementById('result').innerText = 'Please fill in all fields';
+        return;
     }
 
     try {
@@ -64,27 +71,27 @@ async function convertCurrency() {
         const data = await response.json();
         const rate = data.conversion_rates[toCurrency];
 
-        // Check if the target currency is valid
+        // Check if the currency conversion rate is available
         if (!rate) {
             document.getElementById('result').innerText = 'Invalid currency code';
             return;
         }
 
-        // Calculate the converted amount and show it
+        // Calculate the converted amount and display it
         const convertedAmount = (amount * rate).toFixed(2);
         document.getElementById('result').innerText = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
     } catch (error) {
-        // If there's an error during the fetch, show an error message
+        // Handle any errors during the API request
         document.getElementById('result').innerText = 'Error fetching conversion rates';
     }
 }
 
-// Function to swap currencies and recalculate the conversion
+// Function to swap the selected currencies and recalculate the conversion
 function swapCurrencies() {
     const fromCurrency = document.getElementById('fromCurrency');
     const toCurrency = document.getElementById('toCurrency');
 
-    // Swap the selected values
+    // Swap the selected currencies
     const temp = fromCurrency.value;
     fromCurrency.value = toCurrency.value;
     toCurrency.value = temp;
@@ -93,3 +100,5 @@ function swapCurrencies() {
     convertCurrency();
 }
 
+// Fetch and display the list of currencies when the page loads
+window.onload = getCurrencies;
