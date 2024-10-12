@@ -1,15 +1,15 @@
-/* General body styles with background image */
+
 body {
     font-family: 'Helvetica Neue', Arial, sans-serif;
-    background-image: url('./venice2.jpeg'); /* Replace 'your-image.jpg' with the actual path to your image */
-    background-size: cover; /* Make the image cover the entire background */
-    background-position: center; /* Center the background image */
-    background-repeat: no-repeat; /* Prevent the image from repeating */
-    color: #fff; /* Change text color to white for better contrast */
+    background-image: url('./venice2.jpeg'); 
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    color: #fff; 
     margin: 0;
     padding: 20px;
     display: block;
-    height: 100vh; /* Ensure the body takes the full height */
+    height: 100vh; 
     overflow-y: auto;
 }
 
@@ -33,7 +33,7 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Input styles for amount, search, and dropdowns with less transparency */
+/* Input styles for amount, search country and select dropdowns */
 input[type="number"], 
 input[type="text"], 
 select {
@@ -91,4 +91,48 @@ p#result {
     color: #16a085; /* Bright green for result */
     text-align: center;
     padding: 15px;
-    border
+    border: 2px solid #16a085; /* Green border for result */
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Country search result list */
+ul#countryResult {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+ul#countryResult li {
+    background-color: rgba(255, 255, 255, 0.85); /* Same less transparent background for list items */
+    color: #333;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    border: 2px solid #ccc; /* Same as input fields */
+    font-size: 1rem;
+}
+
+/* Horizontal rule styling */
+hr {
+    border: none;
+    height: 1px;
+    background-color: #ccc;
+    margin: 40px 0;
+}
+
+/* Responsive design for mobile devices */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    button {
+        font-size: 1rem;
+    }
+}

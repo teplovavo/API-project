@@ -6,50 +6,52 @@
     <title>SBA 308a Teplova, Veronika</title>
     <script type="module" defer src="./script.js"></script>
     <script type="module" defer src="./search.js"></script>
-
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <div class="container">
-    <h1>Currency Converter</h1>
+        <h1>Currency Converter</h1>
+        <br/><br/><br/>
+
+        <!-- Input for amount -->
+        <label for="amount">Amount:</label>
+        <input type="number" id="amount" placeholder="Enter amount">
+        <br/><br/>
+
+        <!-- Dropdowns for selecting currencies -->
+        <label for="fromCurrency">From:</label>
+        <select id="fromCurrency"></select>
+
+        <label for="toCurrency">To:</label>
+        <select id="toCurrency"></select>
+
+        <button id="convertBtn">Convert</button>
+        <br/>
+        <button id="swapBtn">Swap</button>
+        <br/>
+        <p id="result"></p>
+        <br/>
+
+        <!-- --------------Search Country ------- -->
+        <h2>Search for Country Currency</h2>
+        <label for="countrySearch">Search Country:</label>
+        <input type="text" id="countrySearch" placeholder="Enter country name">
+        <br/><br/>
+        <button id="countrySearchBtn">Search</button>
+        <br/>
+        <ul id="countryResult"></ul>
+
+
+ <!-- Save Country Button -->
+    <button id="saveCountryAction">Save Country</button>
+
+    <!-- Placeholder for displaying the list of saved countries -->
+    <ul id="savedCountriesList"></ul>
+    <p id="saveResult"></p>
+    </div>
+
     <br/>
-    <br/>
-    <br/>
 
-
-<!-- Input for amount -->
-<label for="amount">Amount:</label>
-<input type="number" id="amount" placeholder="Enter amount">
-<br/>
-<br/>
-<!-- Dropdowns for selecting currencies -->
-<label for="fromCurrency">From:</label>
-
-<select id="fromCurrency"></select>
-
-<label for="toCurrency">To:</label>
-<select id="toCurrency"></select>
-
-<button id="convertBtn">Convert</button>
-<br/>
-<button id="swapBtn">Swap</button>
-<br/>
-<p id="result"></p>
-
-   <!-- --------------Search Country ------- -->
-   <h2>Search for Country Currency</h2>
-   <label for="countrySearch">Search Country:</label>
-   <input type="text" id="countrySearch" placeholder="Enter country name">
-   <br/><br/>
-   <button id="countrySearchBtn">Search</button>
-   <br>
-   <br/>
-   <ul id="countryResult"></ul>
-</div>
-<br/><br/>
-
-<br/><br/>
-
-
+   
 </body>
 </html>
